@@ -62,5 +62,48 @@ function reverse(str){
     console.log("Reversed string: " + buffer);  
 }
 
+
 let sentence = "Hi my name is Saurabh";
 reverse(sentence);
+
+
+function mergeSortedArrays(array1, array2){
+    console.log("\n\nMerging Sorted Arrays\n\n");
+    const mergedArray = [];
+    let i = 0;  //This represents the index of array 1
+    let j = 0;  //This represents the index of array 2
+
+
+    // This is our baseline check, incase one of the arrays passed is blank
+    // return the other array as the final product.
+    if(array1.length === 0){
+        return array2;
+    }
+
+    if(array2.length === 0){
+        return array1;
+    }
+
+    //While there is an element in both arrays
+    while(array1[i] || array2[j]){
+        console.log('Comparing the follwoing: ', array1[i], ' ', array2[j]);
+
+        //check if array2 at index j is undefined (final case solution) or check if arr1 < arr2
+            //if true, then push array1 to mergedArray
+            //else, push array2 element to mergedArray
+        if(array2[j] === undefined || array1[i] < array2[j]){
+            mergedArray.push(array1[i]);
+            i++;
+        }
+        else{
+            mergedArray.push(array2[j]);
+            j++;
+        }
+    }
+    
+    console.log('\nHere is the final array: \n',mergedArray);
+    return mergedArray;
+}
+
+
+mergeSortedArrays([0,3,4,31], [3,4,6]);
