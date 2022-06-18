@@ -1,4 +1,4 @@
-let SIZE = 10;
+let SIZE = 100;
 
 
 //Generate a random number between min and max
@@ -28,33 +28,30 @@ function generateArray(size) {
     return array;
 } 
 
-function quickSort(array){
-    let high = array.length - 1;
-    let low = 0;
-    if (low < high){
-        j = partition(array);
+function quickSort(array, lowerBound, upperBound){
+    if (lowerBound < upperBound){
+        j = partition(array, lowerBound, upperBound);
 
-        quickSort(low, j);
-        quickSort(j + 1, high);
+        quickSort(array, lowerBound, j - 1);
+        quickSort(array, j + 1, upperBound);
     }
 
     return array;
 }
 
-function partition(array) {
-    let high = array.length - 1;
-    let low = 0;
-    let pivot = array[0];
+function partition(array, lowerBound, upperBound) {
+   
+    let pivot = array[lowerBound];
 
-    let i = low;
-    let j = high;
+    let i = lowerBound;
+    let j = upperBound;
 
     while (i < j){
         while (array[i] <= pivot){ 
             i++;
         }
 
-        while (array[j] >= pivot){
+        while (array[j] > pivot){
             j--;
         }
 
@@ -65,12 +62,11 @@ function partition(array) {
         }
     }
 
-    let temp = array[low];
-    array[low] = array[j];
+    let temp = array[lowerBound];
+    array[lowerBound] = array[j];
     array[j] = temp;
 
-    console.log("INSIDE PARTITION - J = " + j);
-    // console.log(array);
+    
     return j;
 }
 
@@ -78,7 +74,7 @@ function doQuickSort() {
     let arr = generateArray(SIZE);
     console.log (arr);
 
-    quickSort(arr);
+    quickSort(arr, 0, arr.length - 1);
 
     console.log ("\n********* S O R T E D   A R R A Y **********\n");
     console.log(arr);
