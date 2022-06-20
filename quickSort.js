@@ -17,7 +17,7 @@ function arraysAreEqual(arrOne, arrTwo) {
     return true;
 }
 
-
+//generate an array filled with random values
 function generateArray(size) {
     let array = [];
     
@@ -28,6 +28,7 @@ function generateArray(size) {
     return array;
 } 
 
+//recursive quick sort 
 function quickSort(array, lowerBound, upperBound){
     if (lowerBound < upperBound){
         j = partition(array, lowerBound, upperBound);
@@ -39,6 +40,8 @@ function quickSort(array, lowerBound, upperBound){
     return array;
 }
 
+//this function finds the position of the pivot value 
+//the pivot value is later used as reference to split the array and recursively perfom quickSort
 function partition(array, lowerBound, upperBound) {
    
     let pivot = array[lowerBound];
