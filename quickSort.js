@@ -31,7 +31,7 @@ function generateArray(size) {
 //recursive quick sort 
 function quickSort(array, lowerBound, upperBound){
     if (lowerBound < upperBound){
-        j = partition(array, lowerBound, upperBound);
+        let j = partition(array, lowerBound, upperBound);
 
         quickSort(array, lowerBound, j - 1);
         quickSort(array, j + 1, upperBound);
@@ -59,7 +59,7 @@ function partition(array, lowerBound, upperBound) {
         }
 
         if (i < j){
-            let temp = array [i];
+            let temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
